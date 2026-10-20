@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efficiency Method of Illumination and Calculation</title>
+    
+    <!-- Materialize CSS mula sa local folder -->
+    <link rel="stylesheet" href="materialize-v1.0.0/materialize/css/materialize.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ================= FIRST PAGE (LANDING PAGE) ================= -->
+    <div id="landing-page" class="page-container">
+        <div class="header-banner center-align">
+            <h4 class="header-title">EFFICIENCY METHOD OF ILLUMINATION AND CALCULATION</h4>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="center-content">
+                <button id="start-btn" onclick="showComputation()" class="btn-large waves-effect waves-light custom-yellow-btn">
+                    START
+                </button>
+                <p class="sub-text">PRESS "START" TO START COMPUTATION</p>
+                <div class="bulb-container">
+                    <img src="bulb.webp" alt="Light Bulb" class="responsive-img bulb-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= SECOND PAGE (INPUT PAGE) ================= -->
+    <div id="computation-page" class="page-container" style="display: none;">
+        <div class="header-banner center-align">
+            <h4 class="header-title">EFFICIENCY METHOD OF ILLUMINATION AND CALCULATION</h4>
+        </div>
+
+        <div class="container computation-container">
+            
+            <!-- TAP TO SEE TABLE Button sa Kanang Taas ng 2nd Page -->
+            <div class="row right-align mb-15">
+                <button onclick="openTableModal()" class="btn waves-effect waves-light custom-yellow-btn table-trigger-btn">
+                    TAP TO SEE TABLE
+                </button>
+            </div>
+
+            <div class="row">
+                <!-- Kaliwang Column: AREA DIMENSION -->
+                <div class="col s12 m6">
+                    <h6 class="section-header">AREA DIMENSION:</h6>
+                    
+                    <div class="input-row">
+                        <label class="input-label">LENGTH (L)</label>
+                        <div class="yellow-input-wrapper">
+                            <input type="number" id="length-input" step="any">
+                            <span class="unit-tag">m</span>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label class="input-label">WIDTH (W)</label>
+                        <div class="yellow-input-wrapper">
+                            <input type="number" id="width-input" step="any">
+                            <span class="unit-tag">m</span>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label class="input-label">HEIGHT (H)</label>
+                        <div class="yellow-input-wrapper">
+                            <input type="number" id="height-input" step="any">
+                            <span class="unit-tag">m</span>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label class="input-label">WORKING AREA HEIGHT</label>
+                        <div class="yellow-input-wrapper">
+                            <input type="number" id="work-height-input" step="any">
+                            <span class="unit-tag">m</span>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label class="input-label">Mounting Height (hm)</label>
+                        <div class="yellow-input-wrapper readonly-wrapper">
+                            <input type="number" id="hm-output" readonly>
+                            <span class="unit-tag">m</span>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label class="input-label">Area (A)</label>
+                        <div class="yellow-input-wrapper readonly-wrapper">
+                            <input type="number" id="area-output" readonly>
+                            <span class="unit-tag">sqm</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kanang Column: REFLECTANCE, REQUIRED QUALITY OF LIGHT, SELECTED LAMP -->
+                <div class="col s12 m6">
+                    <h6 class="section-header">REFLECTANCE:</h6>
+                    
+                    <div class="input-row">
+                        <label class="input-label">CEILING (ρ)</label>
+                        <div class="yellow-input-wrapper">
+                            <input type="number" id="ceiling-ref" step="any">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label class="input-label">WALL (ρ)</label>
+                        <div class="yellow-input-wrapper">
+                            <input type="number" id="wall-ref" step="any">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label class="input-label">WORK SURFACE (ρ)</label>
+                        <div class="yellow-input-wrapper">
+                            <input type="number" id="work-ref" step="any">
+                        </div>
+                    </div>
+
+                    <h6 class="section-header mt-30">REQUIRED QUALITY OF LIGHT:</h6>
+
+                    <div class="input-row">
+                        <label class="input-label">ILLUMINANCE (E)</label>
+                        <div class="yellow-input-wrapper">
+                            <input type="number" id="illuminance-input" step="any">
+                            <span class="unit-tag">lux</span>
+                        </div>
+                    </div>
+
+                    <h6 class="section-header mt-30">SELECTED LAMP:</h6>
+
+                    <div class="input-row">
+                        <label class="input-label">LUMINOUS FLUX PER LAMP (Φ)</label>
+                        <div class="yellow-input-wrapper">
+                            <input type="number" id="luminous-flux-input" step="any">
+                            <span class="unit-tag">lumens</span>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label class="input-label">NUMBER OF LAMPS PER FIXTURE (n)</label>
+                        <div class="yellow-input-wrapper">
+                            <input type="number" id="n-lamp-input" step="any">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label class="input-label">WATTAGE PER LAMP (P)</label>
+                        <div class="yellow-input-wrapper">
+                            <input type="number" id="wattage-input" step="any">
+                            <span class="unit-tag">W</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BACK, RESET, at NEXT Buttons sa 2nd Page -->
+            <div class="row left-align mt-20 button-group-row space-between-buttons">
+                <button id="back-btn" onclick="showLanding()" class="btn-large waves-effect waves-light custom-yellow-btn action-btn-style">
+                    BACK
+                </button>
+                <div class="right-buttons-group">
+                    <button id="reset-btn" onclick="resetCalculator()" class="btn-large waves-effect waves-light custom-yellow-btn action-btn-style">
+                        RESET
+                    </button>
+                    <button id="next-btn" onclick="showThirdPage()" class="btn-large waves-effect waves-light custom-yellow-btn action-btn-style">
+                        NEXT
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= THIRD PAGE ================= -->
+    <div id="third-page" class="page-container" style="display: none;">
+        <div class="header-banner center-align">
+            <h4 class="header-title">EFFICIENCY METHOD OF ILLUMINATION AND CALCULATION</h4>
+        </div>
+
+        <div class="container computation-container third-page-design-container">
+            
+            <!-- TAP TO SEE TABLE Button sa Kanang Taas ng 3rd Page -->
+            <div class="row right-align mb-20">
+                <button onclick="openTableModal()" class="btn waves-effect waves-light custom-yellow-btn table-trigger-btn">
+                    TAP TO SEE TABLE
+                </button>
+            </div>
+
+            <!-- K Formula Row (Ginawa nang hm ang nasa denominator) -->
+            <div class="custom-formula-row">
+                <span class="formula-label-text">K =</span>
+                <div class="fraction-box">
+                    <span class="numerator">L &times; W</span>
+                    <span class="divider-line"></span>
+                    <span class="denominator">h<sub>m</sub> (L+W)</span>
+                </div>
+                <span class="formula-label-text">=</span>
+                <div class="yellow-input-wrapper custom-pill">
+                    <input type="text" id="k-val-output" readonly>
+                </div>
+            </div>
+
+            <!-- Room Factor Status Note -->
+            <div id="k-status-note" class="status-note-text">
+                *ROOM INDEX IS NOT IN TABLE
+            </div>
+
+            <!-- Interpolation Formula Row -->
+            <div id="interpolation-section" class="custom-formula-row interpolation-row-gap">
+                <span class="formula-label-text">&mu;F =</span>
+                <div class="fraction-box">
+                    <span class="numerator">(y2-y1)</span>
+                    <span class="divider-line"></span>
+                    <span class="denominator">(x2-x1)</span>
+                </div>
+                <span class="formula-label-text">x (K - x1) + y1 =</span>
+                <div class="yellow-input-wrapper custom-pill">
+                    <input type="text" id="interpolation-calc-output" readonly>
+                </div>
+            </div>
+
+            <!-- Bottom Row -->
+            <div class="row bottom-inputs-grid">
+                <div class="col s12 m6 left-align-item">
+                    <span class="bottom-label">INTERPOLATION (&mu;F) -</span>
+                    <div class="yellow-input-wrapper custom-pill inline-pill">
+                        <input type="text" id="uf-final-output" readonly>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 right-align-item">
+                    <span class="bottom-label">MANUFACTURERS DATA (&eta;) -</span>
+                    <div class="yellow-input-wrapper custom-pill inline-pill">
+                        <input type="number" id="eta-input" step="any" value="0.85">
+                    </div>
+                </div>
+            </div>
+
+            <!-- BACK at NEXT Buttons sa 3rd Page -->
+            <div class="row space-between-buttons footer-buttons-row">
+                <button onclick="showComputation()" class="btn-large waves-effect waves-light custom-yellow-btn action-btn-style">
+                    BACK
+                </button>
+                <button onclick="showFourthPage()" class="btn-large waves-effect waves-light custom-yellow-btn action-btn-style">
+                    NEXT
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= FOURTH PAGE (FINAL COMPUTATION & UPD) ================= -->
+    <div id="fourth-page" class="page-container" style="display: none;">
+        <div class="header-banner center-align">
+            <h4 class="header-title">EFFICIENCY METHOD OF ILLUMINATION AND CALCULATION</h4>
+        </div>
+
+        <div class="container computation-container third-page-design-container">
+            
+            <h6 class="section-header">DETERMINE THE NUMBER OF LUMINAIRES:</h6>
+
+            <!-- N Formula Row -->
+            <div class="custom-formula-row" style="margin-top: 20px; margin-bottom: 25px;">
+                <span class="formula-label-text">N =</span>
+                <div class="fraction-box">
+                    <span class="numerator">E &times; A</span>
+                    <span class="divider-line"></span>
+                    <span class="denominator">n &times; &Phi; &times; &eta; &times; &mu;F</span>
+                </div>
+                <span class="formula-label-text">=</span>
+                <div class="yellow-input-wrapper wide-pill">
+                    <input type="text" id="n-output" readonly>
+                    <span class="unit-tag">pcs</span>
+                </div>
+            </div>
+
+            <h6 class="section-header">DETERMINE THE UNIT POWER DENSITY (UPD):</h6>
+
+            <!-- UPD Formula Row -->
+            <div class="custom-formula-row" style="margin-top: 20px; margin-bottom: 25px;">
+                <span class="formula-label-text">UPD =</span>
+                <div class="fraction-box">
+                    <span class="numerator">P &times; N</span>
+                    <span class="divider-line"></span>
+                    <span class="denominator">A</span>
+                </div>
+                <span class="formula-label-text">=</span>
+                <div class="yellow-input-wrapper wide-pill">
+                    <input type="text" id="upd-output" readonly>
+                    <span class="unit-tag">W/m&sup2;</span>
+                </div>
+            </div>
+
+            <!-- BACK at COMPLETE Buttons sa 4th Page -->
+            <div class="row space-between-buttons footer-buttons-row mt-30">
+                <button onclick="showThirdPage()" class="btn-large waves-effect waves-light custom-yellow-btn action-btn-style">
+                    BACK
+                </button>
+                <button onclick="completeCalculation()" class="btn-large waves-effect waves-light custom-yellow-btn action-btn-style">
+                    COMPLETE
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= MODAL PARA SA TABLE (POPUP) ================= -->
+    <div id="table-modal" class="custom-modal" style="display: none;">
+        <div class="modal-content-box">
+            <button onclick="closeTableModal()" class="modal-close-btn">&times;</button>
+            <h5 class="center-align" style="font-weight: 800; margin-bottom: 20px;">ROOM REFLECTANCE & UTILIZATION FACTOR TABLE</h5>
+            <div class="table-img-container center-align">
+                <img src="reflectance table.jpg" alt="Reflectance Table" class="responsive-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- Materialize JavaScript -->
+    <script src="materialize-v1.0.0/materialize/js/materialize.min.js"></script>
+    <script src="function.js"></script>
+</body>
+</html>

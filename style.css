@@ -1,0 +1,377 @@
+/* General Background Gradient */
+body {
+    background: linear-gradient(to bottom, #fff5c0, #ffffff);
+    min-height: 100vh;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    overflow-x: hidden;
+}
+
+.page-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+}
+
+/* Header Banner (Curved Bottom Corners) */
+.header-banner {
+    background-color: #ffff00;
+    padding: 25px 20px;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.header-title {
+    margin: 0;
+    font-weight: 800;
+    color: #000000;
+    letter-spacing: 1px;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+/* Landing Page Styles */
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.custom-yellow-btn {
+    background-color: #ffff00 !important;
+    color: #000000 !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-radius: 25px;
+    padding: 0 45px;
+    height: 54px;
+    line-height: 54px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.custom-yellow-btn:hover {
+    background-color: #f0f000 !important;
+}
+
+.sub-text {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #000000;
+    letter-spacing: 0.5px;
+}
+
+.bulb-container {
+    margin-top: 10px;
+}
+
+.bulb-img {
+    max-height: 200px;
+    object-fit: contain;
+}
+
+/* Computation Page Styles & Centering */
+.computation-container {
+    width: 90% !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    padding-bottom: 30px;
+}
+
+.section-header {
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    border-bottom: 2px solid #ffd54f;
+    padding-bottom: 5px;
+}
+
+.mt-30 {
+    margin-top: 25px;
+}
+
+.mt-20 {
+    margin-top: 15px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mb-20 {
+    margin-bottom: 15px;
+}
+
+/* Input Rows Layout */
+.input-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 2px 4px;
+}
+
+.input-label {
+    font-weight: 700;
+    color: #000000;
+    font-size: 0.8rem;
+    width: 48%;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+/* Pill-shaped Yellow Input Boxes */
+.yellow-input-wrapper {
+    position: relative;
+    width: 48%;
+    background-color: #ffff00;
+    border-radius: 20px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.yellow-input-wrapper input {
+    border: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    height: 100% !important;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    width: 100%;
+    background: transparent !important;
+    font-size: 0.95rem;
+}
+
+.yellow-input-wrapper input:focus {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.readonly-wrapper {
+    background-color: #ffea00;
+}
+
+.unit-tag {
+    position: absolute;
+    right: 12px;
+    font-weight: bold;
+    color: #000000;
+    pointer-events: none;
+    font-size: 0.8rem;
+}
+
+/* Button Group Layout (Back, Reset, Next) */
+.button-group-row {
+    display: flex;
+    gap: 10px;
+}
+
+.space-between-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.right-buttons-group {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn-style {
+    width: 150px !important;
+    text-align: center !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    height: 44px !important;
+    line-height: 44px !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Table Trigger Button */
+.table-trigger-btn {
+    background-color: #ffff00 !important;
+    color: #000000 !important;
+    font-weight: 800 !important;
+    border-radius: 22px !important;
+    width: 170px !important;
+    height: 44px !important;
+    line-height: 44px !important;
+    font-size: 0.9rem !important;
+    padding: 0 !important;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Responsive Layout para sa 3rd at 4th Page */
+.third-page-design-container {
+    width: 92% !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    padding: 5px 10px 20px 10px !important;
+}
+
+.custom-formula-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.formula-label-text {
+    font-weight: 800;
+    color: #000;
+}
+
+/* Fraction Styling para sa K at Interpolation Formula */
+.fraction-box {
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 0 4px;
+}
+
+.numerator {
+    border-bottom: 2px solid #000;
+    padding-bottom: 1px;
+}
+
+.denominator {
+    padding-top: 1px;
+}
+
+.custom-pill {
+    width: 180px !important;
+}
+
+/* Mas malawak na pill para sa 4th page results para magkasya ang actual at approximate values */
+.wide-pill {
+    width: 230px !important;
+}
+
+.status-note-text {
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: #000;
+    margin-bottom: 15px;
+    letter-spacing: 0.3px;
+}
+
+.interpolation-row-gap {
+    margin-bottom: 20px;
+}
+
+.bottom-inputs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.left-align-item, .right-align-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.bottom-label {
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: #000;
+}
+
+.inline-pill {
+    width: 55% !important;
+}
+
+.footer-buttons-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.footer-buttons-row .action-btn-style {
+    width: 48% !important;
+}
+
+/* Modal Popup para sa Table Image */
+.custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-box {
+    background-color: #fffde7;
+    padding: 25px 20px;
+    border-radius: 20px;
+    width: 92%;
+    max-width: 850px;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #000;
+}
+
+.table-img-container img {
+    border-radius: 10px;
+    border: 3px solid #ffeb3b;
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+}  
