@@ -393,7 +393,7 @@ body {
 #interpolation-values-display strong {
     display: block;
     margin-bottom: 6px;
-    color: #d9480f;
+    color: #000000;
 }
 
 .table-vals-row {
