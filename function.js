@@ -126,19 +126,38 @@ function calculateResultsThirdPage() {
 
     let ufValue = null;
 
+    // 1. Kung eksaktong nasa table ang K
     if (matchedRow.values[kRounded] !== undefined) {
         ufValue = matchedRow.values[kRounded];
         kStatusNote.innerText = "*ROOM INDEX IS IN THE TABLE";
         kStatusNote.style.color = "green";
         interpolationSection.style.display = "none";
         ufFinalOutput.value = ufValue.toFixed(4);
-    } else {
-        kStatusNote.innerText = "*ROOM INDEX IS NOT IN TABLE";
+    } 
+    // 2. Kung ang K ay mas mababa sa pinakamababa sa table (< 0.75) -> Direktang gamitin ang 0.75 value
+    else if (kRounded < standardIndices[0]) {
+        ufValue = matchedRow.values[standardIndices[0]];
+        kStatusNote.innerText = "*ROOM INDEX IS BELOW TABLE LIMIT (USING 0.75 VALUE)";
+        kStatusNote.style.color = "orange";
+        interpolationSection.style.display = "none"; // Itago ang interpolation section dahil walang interpolation na magaganap
+        ufFinalOutput.value = ufValue.toFixed(4);
+    }
+    // 3. Kung lampas sa pinakamataas (> 5) -> Gamitin ang huling value (5)
+    else if (kRounded > standardIndices[standardIndices.length - 1]) {
+        ufValue = matchedRow.values[standardIndices[standardIndices.length - 1]];
+        kStatusNote.innerText = "*ROOM INDEX IS ABOVE TABLE LIMIT (USING 5.0 VALUE)";
+        kStatusNote.style.color = "orange";
+        interpolationSection.style.display = "none";
+        ufFinalOutput.value = ufValue.toFixed(4);
+    }
+    // 4. Kung nasa pagitan (Kailangang mag-interpolate)
+    else {
+        kStatusNote.innerText = "*ROOM INDEX IS NOT IN TABLE (INTERPOLATING)";
         kStatusNote.style.color = "red";
         interpolationSection.style.display = "flex";
 
         let x1 = standardIndices[0];
-        let x2 = standardIndices[standardIndices.length - 1];
+        let x2 = standardIndices[1];
 
         for (let i = 0; i < standardIndices.length - 1; i++) {
             if (kRounded >= standardIndices[i] && kRounded <= standardIndices[i + 1]) {
@@ -148,18 +167,17 @@ function calculateResultsThirdPage() {
             }
         }
 
-        if (kRounded < standardIndices[0]) {
-            x1 = standardIndices[0];
-            x2 = standardIndices[1];
-        } else if (kRounded > standardIndices[standardIndices.length - 1]) {
-            x1 = standardIndices[standardIndices.length - 2];
-            x2 = standardIndices[standardIndices.length - 1];
-        }
-
         const y1 = matchedRow.values[x1];
         const y2 = matchedRow.values[x2];
 
-        ufValue = ((y2 - y1) / (x2 - x1)) * (kRounded - x1) + y1;
+        // I-display ang x1, x2, y1, y2 sa screen
+        if(document.getElementById('val-x1')) document.getElementById('val-x1').innerText = x1;
+        if(document.getElementById('val-x2')) document.getElementById('val-x2').innerText = x2;
+        if(document.getElementById('val-y1')) document.getElementById('val-y1').innerText = y1;
+        if(document.getElementById('val-y2')) document.getElementById('val-y2').innerText = y2;
+
+        // Linear Interpolation Formula
+        ufValue = y1 + ((kRounded - x1) / (x2 - x1)) * (y2 - y1);
 
         interpolationCalcOutput.value = ufValue.toFixed(4);
         ufFinalOutput.value = ufValue.toFixed(4);
@@ -222,4 +240,25 @@ if (lengthInput && widthInput) {
 if (heightInput && workHeightInput) {
     heightInput.addEventListener('input', calculateHm);
     workHeightInput.addEventListener('input', calculateHm);
+}
+// Function para i-check at ipakita ang fake ad pagka-load ng site
+window.addEventListener('DOMContentLoaded', () => {
+    // Kung hindi pa nila nakikita o natatapos ang session, ipalabas ang ad
+    if (!sessionStorage.getItem('adShown')) {
+        document.getElementById('fake-ad-modal').style.display = 'flex';
+    }
+});
+
+// Pagsara ng Ad kapag clinick ang 'X' o 'OK' button
+function closeAdModal() {
+    document.getElementById('fake-ad-modal').style.display = 'none';
+    sessionStorage.setItem('adShown', 'true'); // Para hindi na ulit lumabas habang nag-aapp sila
+}
+
+if(document.getElementById('close-ad-btn')) {
+    document.getElementById('close-ad-btn').addEventListener('click', closeAdModal);
+}
+
+if(document.getElementById('ok-ad-btn')) {
+    document.getElementById('ok-ad-btn').addEventListener('click', closeAdModal);
 }

@@ -375,3 +375,40 @@ body {
     max-height: 70vh;
     object-fit: contain;
 }  
+/* Styling para sa Table Values Used container sa 3rd Page */
+#interpolation-values-display {
+    background-color: #fff9db;
+    border: 2px solid #ffd43b;
+    border-radius: 12px;
+    padding: 12px 18px;
+    margin: 12px auto;
+    max-width: 350px;
+    font-family: inherit;
+    font-size: 13px;
+    color: #333;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#interpolation-values-display strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #d9480f;
+}
+
+.table-vals-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+}
+/* Styling para sa Fake Ad Modal */
+#fake-ad-modal {
+    animation: fadeIn 0.3s ease-in-out;
+}
+#close-ad-btn:hover {
+    color: #000 !important;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
